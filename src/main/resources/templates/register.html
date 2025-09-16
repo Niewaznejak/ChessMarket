@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout}">
+<div th:fragment="content" class="max-w-md mx-auto">
+  <div th:if="${msg}" class="mb-3 p-2 rounded bg-emerald-100 text-emerald-800" th:text="${msg}"></div>
+  <div th:if="${error}" class="mb-3 p-2 rounded bg-red-100 text-red-800" th:text="${error}"></div>
+  <h1 class="text-2xl font-semibold mb-4">Rejestracja</h1>
+  <form method="post" action="/register" class="space-y-3 bg-slate-900 p-4 rounded-xl shadow">
+    <input name="username" placeholder="Login" class="w-full border rounded px-3 py-2"/>
+    <input name="email" type="email" placeholder="Email" class="w-full border rounded px-3 py-2"/>
+    <input name="password" type="password" placeholder="Hasło" class="w-full border rounded px-3 py-2"/>
+    <button class="w-full bg-emerald-600 text-white py-2 rounded">Utwórz konto</button>
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+  </form>
+</div>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout}">
+<div th:fragment="content" class="max-w-3xl mx-auto">
+  <div class="bg-slate-900 p-4 rounded-xl shadow">
+    <img th:if="${listing.imageFilename}" th:src="@{'/uploads/' + ${listing.imageFilename}}" alt="zdjęcie"
+         class="w-full h-80 object-cover rounded-lg mb-4">
+    <h1 class="text-2xl font-semibold" th:text="${listing.title}"></h1>
+    <div class="text-slate-600" th:text="${#temporals.format(listing.createdAt, 'dd.MM.yyyy HH:mm')}"></div>
+    <div class="mt-2 text-lg font-medium" th:text="${#numbers.formatDecimal(listing.price, 1, 'COMMA', 2, 'POINT')} + ' PLN'"></div>
+    <div class="text-sm mb-4" th:text="'Stan: ' + ${listing.conditionLabel}"></div>
+    <p class="mb-6 whitespace-pre-wrap" th:text="${listing.description}"></p>
+
+    <div>
+      <button id="reveal-phone" class="bg-emerald-600 text-white px-4 py-2 rounded">Kontakt – pokaż telefon</button>
+      <span id="phone" class="ml-3 font-semibold hidden" th:text="${listing.phone}"></span>
+    </div>
+  </div>
+</div>
+</html>

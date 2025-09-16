@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout}">
+<div th:fragment="content">
+  <h1 class="text-2xl font-semibold mb-4">Ogłoszenia – używane szachy</h1>
+  <div class="grid md:grid-cols-3 gap-4">
+    <a th:each="l : ${listings}" th:href="@{'/listing/' + ${l.id}}" class="bg-slate-900 rounded-xl p-4 shadow hover:shadow-md transition">
+      <img th:if="${l.imageFilename}" th:src="@{'/uploads/' + ${l.imageFilename}}" alt="zdjęcie"
+           class="w-full h-48 object-cover rounded-lg mb-3">
+      <div class="font-semibold" th:text="${l.title}"></div>
+      <div class="text-sm text-slate-500" th:text="${#temporals.format(l.createdAt, 'dd.MM.yyyy HH:mm')}"></div>
+      <div class="mt-2 text-lg" th:text="${#numbers.formatDecimal(l.price, 1, 'COMMA', 2, 'POINT')} + ' PLN'"></div>
+      <div class="text-sm" th:text="'Stan: ' + ${l.conditionLabel}"></div>
+    </a>
+  </div>
+</div>
+</html>

@@ -1,0 +1,13 @@
+.idea/
+*.iml
+target/
+*.log
+/.mvn/
+.mvn/
+*.class
+*.jar
+*.war
+*.zip
+chessdb*
+uploads/*
+!uploads/.keep

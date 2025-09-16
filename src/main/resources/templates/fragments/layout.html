@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" th:fragment="layout">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title th:text="${title} ?: 'ChessMarket'"></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+	input, textarea {
+		color: black !important;
+	}
+</style>
+<body class="bg-slate-900 text-slate-200">
+  <header class="bg-slate-900 border-b sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-bold text-xl">♟️ ChessMarket</a>
+      <nav class="space-x-4">
+        <a href="/" class="hover:underline">Ogłoszenia</a>
+        <a href="/listing/new" class="bg-blue-600 text-white px-3 py-2 rounded">Dodaj ogłoszenie</a>
+        <a href="/login" class="hover:underline">Logowanie</a>
+        <a href="/register" class="hover:underline">Rejestracja</a>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 py-6">
+    <div th:insert="~{::content}"></div>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
